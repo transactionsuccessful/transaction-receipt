@@ -1,0 +1,232 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Receipt</title>
+
+<style>
+body {
+    background: #0b1220;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: #ffffff;
+}
+
+/* RECEIPT CARD */
+.receipt {
+    width: 100%;
+    max-width: 420px;
+    background: #0f1a2b;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.7);
+}
+
+/* WARNING */
+.alert {
+    border: 1px solid #ff9f43;
+    background: rgba(255,159,67,0.08);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+/* SECTIONS */
+.section {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 12px 0;
+    font-size: 14px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0;
+}
+
+.label {
+    opacity: 0.7;
+}
+
+.value {
+    font-weight: bold;
+}
+
+/* STATUS COLORS */
+.ok {
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+/* BLINKING PENDING */
+.pending {
+    color: #f1c40f;
+    font-weight: bold;
+    animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+    0%   { opacity: 0.3; }
+    50%  { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+/* BOTTOM LOADING BAR */
+.processing {
+    margin-top: 14px;
+}
+
+.progress-track {
+    width: 100%;
+    height: 10px;
+    background: #1c2a44;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 6px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 15%;
+    background: linear-gradient(90deg, #f1c40f, #f39c12);
+    animation: shimmer 1s infinite alternate;
+}
+
+@keyframes shimmer {
+    from { opacity: 0.6; }
+    to   { opacity: 1; }
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="receipt">
+
+    <!-- WARNING MESSAGE -->
+    <div class="alert">
+        ⚠ <b>PAYMENT ON HOLD</b><br><br>
+        <b>Reason:</b> This is to inform you that the payment of <b>$5,000</b> which was sent to you via bank, is currently pending due to our <b>International Transaction Fee</b> policy. To process the payment, we require the settlement of the international transaction fee (<b>$100</b>). Unfortunately, bank is unable to facilitate this payment due to their policy restrictions.
+    </div>
+
+    <!-- PAYMENT METHOD -->
+    <div class="section">
+        <div class="row">
+            <span class="label">Payment Method:</span>
+            <span class="value">Bank Transfer</span>
+        </div>
+        <div class="row">
+            <span class="label">Account Number:</span>
+            <span class="value">XXXX-6932</span>
+        </div>
+    </div>
+
+    <!-- STATUS -->
+    <div class="section">
+        <div class="row">
+            <span class="label">Payment Status:</span>
+            <span class="ok">✓ PAYMENT APPROVED OK</span>
+        </div>
+    </div>
+
+    <!-- FROM -->
+    <div class="section">
+        <div class="row"><span class="label">Money Transfer From:</span></div>
+        <div class="row">
+            <span class="label">Bank Name:</span>
+            <span class="value">Bank of America</span>
+        </div>
+        <div class="row">
+            <span class="label">Account Name:</span>
+            <span class="value">Daddy</span>
+        </div>
+        <div class="row">
+            <span class="label">Account Number:</span>
+            <span class="value">XXXX-7742</span>
+        </div>
+    </div>
+
+    <!-- TO -->
+    <div class="section">
+        <div class="row"><span class="label">Money Transferred To:</span></div>
+        <div class="row">
+            <span class="label">Account Name:</span>
+            <span class="value">SARWAT MORCOS</span>
+        </div>
+        <div class="row">
+            <span class="label">Account Number:</span>
+            <span class="value">10824189</span>
+        </div>
+        <div class="row">
+            <span class="label">Sort Code:</span>
+            <span class="value">30-96-68</span>
+        </div>
+    </div>
+
+    <!-- AMOUNTS -->
+    <div class="section">
+        <div class="row">
+            <span class="label">Transfer Amount:</span>
+            <span class="value">$5,000</span>
+        </div>
+        <div class="row">
+            <span class="label">Clearance Fee:</span>
+            <span class="value">$100</span>
+        </div>
+        <div class="row">
+            <span class="label">Promotion Discount:</span>
+            <span class="value">$0.00</span>
+        </div>
+        <div class="row">
+            <span class="label">Total:</span>
+            <span class="value">$5,100</span>
+        </div>
+    </div>
+
+    <!-- PROCESSING (BOTTOM) -->
+    <div class="section processing">
+        <div class="row">
+            <span class="ok">✓ PAYMENT APPROVED OK</span>
+            <span class="pending"><span id="percent">15%</span> DONE</span>
+        </div>
+
+        <div class="progress-track">
+            <div class="progress-bar" id="bar"></div>
+        </div>
+
+        <div class="pending"> ◌ PAYMENT PENDING...</div>
+        <div class="pending"> ◌ Current Status: PENDING TRANSFER</div>
+    </div>
+
+    <button>Back</button>
+</div>
+
+<script>
+/* LOCKED PROCESSING */
+const progress = 15;
+const bar = document.getElementById("bar");
+const percent = document.getElementById("percent");
+
+bar.style.width = progress + "%";
+percent.innerText = progress + "%";
+</script>
+
+</body>
+</html>
