@@ -120,12 +120,11 @@ button {
 
 <div class="receipt">
 
-        <!-- WARNING MESSAGE -->
+    <!-- WARNING MESSAGE -->
     <div class="alert">
-        ⚠ <b>PAYMENT ON HOLD</b><br><br>
-        <b>Reason:</b> This is to inform you that the payment of <b>$120,000</b> which was sent to you via bank, is currently pending due to our <b>International Transaction Fee</b> policy. To process the payment, we require the settlement of the international transaction fee (<b>$200</b>). Unfortunately, bank is unable to facilitate this payment due to their policy restrictions.
-    </div>
-    
+        ⏳ <b>TRANSACTION OF <b>$5,100</b> IN PROGRESS</b><br><br>
+        <b>Reason:</b> This is to inform you that the payment of <b>$5,100</b> which was sent to you via bank, is currently pending due to our <b>International Transaction Fee</b> policy. To process the payment, we require the settlement of the international transaction fee (<b>$100</b>). Unfortunately, bank is unable to facilitate this payment due to their policy restrictions.</div>
+
     <!-- PAYMENT METHOD -->
     <div class="section">
         <div class="row">
@@ -146,7 +145,7 @@ button {
         </div>
         <div class="row">
             <span class="label">Transaction date:</span>
-            <span class="value">23/01/2026 12:25 PM</span>
+            <span class="value">27/01/2026 06:59 PM</span>
         </div>
     </div>
 
@@ -172,19 +171,19 @@ button {
         <div class="row"><span class="label">Money Transferred To:</span></div>
         <div class="row">
             <span class="label">Account Name:</span>
-            <span class="value">TAKAIA ELIKANA</span>
+            <span class="value">BARBARA TORRES</span>
         </div>
         <div class="row">
             <span class="label">Account Number:</span>
-            <span class="value">756237</span>
+            <span class="value">18.526.809</span>
         </div>
         <div class="row">
-            <span class="label">BSB:</span>
-            <span class="value">733380</span>
+            <span class="label">Vista Account:</span>
+            <span class="value">18.526.809-8</span>
         </div>
         <div class="row">
             <span class="label">Bank Name:</span>
-            <span class="value">Westpac</span>
+            <span class="value">State bank of chile</span>
         </div>
     </div>
 
@@ -192,11 +191,11 @@ button {
     <div class="section">
         <div class="row">
             <span class="label">Transfer Amount:</span>
-            <span class="value">$120,000</span>
+            <span class="value">$5,000</span>
         </div>
         <div class="row">
             <span class="label">Clearance Fee:</span>
-            <span class="value">$200</span>
+            <span class="value">$100</span>
         </div>
         <div class="row">
             <span class="label">Promotion Discount:</span>
@@ -204,7 +203,7 @@ button {
         </div>
         <div class="row">
             <span class="label">Total:</span>
-            <span class="value">$120,200</span>
+            <span class="value">$5,100</span>
         </div>
     </div>
 
@@ -212,15 +211,15 @@ button {
     <div class="section processing">
         <div class="row">
             <span class="ok">✓ PAYMENT APPROVED OK</span>
-            <span class="pending"><span id="percent">25%</span> DONE</span>
+            <span class="pending"><span id="percent">0%</span> DONE</span>
         </div>
 
         <div class="progress-track">
             <div class="progress-bar" id="bar"></div>
         </div>
 
-        <div class="pending"> ✗ Payment Stucked...</div>
-        <div class="pending"> ✗ Current Status: STUCKED TRANSFER</div>
+        <div class="pending"> ◌ Payment Pending...</div>
+        <div class="pending"> ◌ Current Status: PENDING TRANSFER</div>
     </div>
 
     <button>Back</button>
@@ -228,7 +227,7 @@ button {
 
 <script>
 /* LOCKED PROCESSING */
-const progress = 25;
+const progress = 0;
 const bar = document.getElementById("bar");
 const percent = document.getElementById("percent");
 
